@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "319562486968",
+    "project_id": "qwikypicky",
+    "storage_bucket": "qwikypicky.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319562486968:android:7c9283c445483c39cf104d",
+        "android_client_info": {
+          "package_name": "com.qwikypicky.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319562486968-22h0v44oqskppvr8uccjokvvghphrufq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYRIxW8AZ32cmV7KqdjH-cbRyjh_bEEp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319562486968-22h0v44oqskppvr8uccjokvvghphrufq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
