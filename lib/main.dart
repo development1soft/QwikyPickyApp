@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:qwikypicky/launch.dart';
 import 'package:qwikypicky/src/Modules/driver/home/driverHome.dart';
 import 'package:qwikypicky/src/Modules/driver/providers/DriverAuthenticationProvider.dart';
+import 'package:qwikypicky/src/Modules/driver/providers/DriverLocationProvider.dart';
+import 'package:qwikypicky/src/Modules/driver/providers/DriverProvider.dart';
 import 'package:qwikypicky/src/Services/ClickServiceProvider.dart';
 import 'package:qwikypicky/src/Services/DeviceInfoServiceProvider.dart';
 import 'package:qwikypicky/src/Services/FirebaseMessagingServiceProvider.dart';
@@ -35,6 +37,12 @@ Future main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => DriverAuthenticationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DriverLocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DriverProvider(),
         ),
       ],
       child: MyApp(loggedIn,driverLoggedIn),
