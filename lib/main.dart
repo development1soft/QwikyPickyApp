@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:qwikypicky/launch.dart';
 import 'package:qwikypicky/src/Modules/customer/home/customerHome.dart';
 import 'package:qwikypicky/src/Modules/customer/providers/CustomerAuthenticationProvider.dart';
+import 'package:qwikypicky/src/Modules/customer/providers/CustomerLocationProvider.dart';
+import 'package:qwikypicky/src/Modules/customer/providers/CustomerProvider.dart';
 import 'package:qwikypicky/src/Modules/driver/home/driverHome.dart';
 import 'package:qwikypicky/src/Modules/driver/providers/DriverAuthenticationProvider.dart';
 import 'package:qwikypicky/src/Modules/driver/providers/DriverLocationProvider.dart';
@@ -50,6 +52,12 @@ Future main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => CustomerAuthenticationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CustomerLocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CustomerProvider(),
         ),
       ],
       child: MyApp(loggedIn,driverLoggedIn,customerLoggedIn),
