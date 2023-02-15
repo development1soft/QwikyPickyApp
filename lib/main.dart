@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qwikypicky/launch.dart';
+import 'package:qwikypicky/src/Modules/customer/home/customerHome.dart';
+import 'package:qwikypicky/src/Modules/customer/providers/CustomerAuthenticationProvider.dart';
 import 'package:qwikypicky/src/Modules/driver/home/driverHome.dart';
 import 'package:qwikypicky/src/Modules/driver/providers/DriverAuthenticationProvider.dart';
 import 'package:qwikypicky/src/Modules/driver/providers/DriverLocationProvider.dart';
@@ -22,6 +24,8 @@ Future main() async {
   bool? loggedIn = (preferences.containsKey('loggedIn')) ? preferences.getBool('loggedIn') : false;
 
   bool? driverLoggedIn = (preferences.containsKey('driverLoggedIn')) ? preferences.getBool('driverLoggedIn') : false;
+
+  bool? customerLoggedIn = (preferences.containsKey('customerLoggedIn')) ? preferences.getBool('customerLoggedIn') : false;
 
   runApp(
     MultiProvider(
@@ -44,8 +48,11 @@ Future main() async {
         ChangeNotifierProvider(
           create: (_) => DriverProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => CustomerAuthenticationProvider(),
+        ),
       ],
-      child: MyApp(loggedIn,driverLoggedIn),
+      child: MyApp(loggedIn,driverLoggedIn,customerLoggedIn),
     )
   );
 }
@@ -56,7 +63,9 @@ class MyApp extends StatefulWidget {
 
   final bool? driverLoggedIn;
 
-  MyApp(this.loggedIn,this.driverLoggedIn);
+  final bool? customerLoggedIn;
+
+  MyApp(this.loggedIn,this.driverLoggedIn,this.customerLoggedIn);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -80,9 +89,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'QwikyPicky',
       debugShowCheckedModeBanner: false,
-      home: (widget.loggedIn!) ? (widget.driverLoggedIn!) ? DriverHomeScreen() : Center(
-        child: Text('customer logged In'),
-      ) : WelcomeScreen(),
+      home: (widget.loggedIn!) ? (widget.driverLoggedIn!) ? DriverHomeScreen() : (widget.customerLoggedIn!) ? CustomerHomeScreen() : WelcomeScreen() : WelcomeScreen(),
     );
   }
 }

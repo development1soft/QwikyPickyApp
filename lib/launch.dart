@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qwikypicky/src/Modules/customer/authentication/loginCustomer.dart';
 import 'package:qwikypicky/src/Modules/driver/authentication/login.dart';
 
 import 'constant.dart';
@@ -70,7 +71,9 @@ class WelcomeScreen extends StatelessWidget {
                     color: Color(COLOR_PRIMARY)),
               ),
               onPressed: () {
-
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginCustomerScreen())
+                );
               },
               style: ButtonStyle(
                 padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
